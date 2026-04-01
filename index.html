@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bharti Engineering Works – Precision Dies, Tooling & Metal Components, Kanpur</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #07090f;
+  --bg2:      #0d1117;
+  --bg3:      #111827;
+  --card:     #0f1623;
+  --blue:     #2563eb;
+  --cyan:     #06b6d4;
+  --violet:   #7c3aed;
+  --accent:   #38bdf8;
+  --border:   #1e2d45;
+  --border2:  #253350;
+  --text:     #e2e8f0;
+  --muted:    #64748b;
+  --white:    #ffffff;
+  --glow:     rgba(37,99,235,.35);
+  --glow2:    rgba(6,182,212,.25);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Outfit',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ─── SCANLINE OVERLAY ─── */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);
+  pointer-events:none;z-index:9998;
+}
+
+/* ─── CURSOR GLOW ─── */
+.cursor-glow{
+  position:fixed;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(37,99,235,.08) 0%,transparent 70%);
+  border-radius:50%;pointer-events:none;z-index:1;
+  transform:translate(-50%,-50%);transition:opacity .3s;
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 60px;
+  background:rgba(7,9,15,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Orbitron',monospace;
+  font-size:1.1rem;font-weight:900;letter-spacing:2px;
+  color:var(--white);text-decoration:none;
+  display:flex;align-items:center;gap:12px;
+}
+.nav-logo-icon{
+  width:36px;height:36px;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+  box-shadow:0 0 20px var(--glow);
+}
+nav ul{list-style:none;display:flex;gap:36px;}
+nav ul a{
+  color:var(--muted);text-decoration:none;
+  font-weight:500;font-size:.9rem;letter-spacing:.5px;
+  transition:color .2s;position:relative;
+}
+nav ul a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:1px;background:var(--accent);
+  transform:scaleX(0);transition:transform .25s;transform-origin:left;
+}
+nav ul a:hover{color:var(--white);}
+nav ul a:hover::after{transform:scaleX(1);}
+.nav-cta{
+  padding:9px 24px;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:#fff;text-decoration:none;
+  border-radius:8px;font-weight:600;font-size:.9rem;
+  box-shadow:0 0 20px var(--glow);
+  transition:opacity .2s,box-shadow .2s;
+}
+.nav-cta:hover{opacity:.9;box-shadow:0 0 30px var(--glow);}
+
+/* ─── HERO ─── */
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;
+  overflow:hidden;padding-top:80px;
+}
+#hero-canvas{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+}
+/* gradient overlay so text is readable */
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(7,9,15,.95) 40%,rgba(7,9,15,.4) 100%);
+  z-index:2;
+}
+.hero-inner{
+  position:relative;z-index:10;
+  max-width:1200px;margin:0 auto;padding:0 60px;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;
+  background:rgba(37,99,235,.15);
+  border:1px solid rgba(37,99,235,.4);
+  border-radius:100px;
+  font-family:'Share Tech Mono',monospace;
+  font-size:.75rem;letter-spacing:2px;color:var(--accent);
+  margin-bottom:24px;
+  animation:fadeUp .8s ease both;
+}
+.hero-badge span{
+  width:6px;height:6px;background:var(--cyan);
+  border-radius:50%;animation:pulse 1.5s ease infinite;
+}
+.hero-title{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(2.2rem,4.5vw,4.2rem);
+  font-weight:900;line-height:1.1;
+  color:var(--white);margin-bottom:20px;
+  animation:fadeUp .8s .1s ease both;
+}
+.hero-title .grad{
+  background:linear-gradient(90deg,var(--accent),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-desc{
+  font-size:1.05rem;color:var(--muted);
+  max-width:500px;margin-bottom:36px;
+  animation:fadeUp .8s .2s ease both;
+}
+.hero-desc strong{color:var(--text);}
+.hero-btns{
+  display:flex;gap:16px;flex-wrap:wrap;
+  animation:fadeUp .8s .3s ease both;
+}
+.btn{
+  padding:13px 32px;border-radius:10px;
+  font-family:'Outfit',sans-serif;font-weight:600;
+  font-size:.95rem;letter-spacing:.5px;
+  text-decoration:none;cursor:pointer;
+  border:none;transition:all .25s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:#fff;box-shadow:0 0 24px var(--glow);
+}
+.btn-primary:hover{box-shadow:0 0 40px var(--glow);transform:translateY(-2px);}
+.btn-ghost{
+  background:transparent;color:var(--text);
+  border:1px solid var(--border2);
+}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+
+/* hero right – floating 3D canvas */
+.hero-3d{
+  position:relative;z-index:10;
+  display:flex;align-items:center;justify-content:center;
+}
+#hero-die-canvas{
+  width:100%;max-width:480px;height:480px;
+  border-radius:24px;
+  border:1px solid var(--border2);
+  background:rgba(13,17,23,.7);
+  box-shadow:0 0 60px rgba(37,99,235,.2),0 0 120px rgba(124,58,237,.1);
+}
+.hero-stats{
+  display:flex;gap:32px;margin-top:32px;
+  animation:fadeUp .8s .4s ease both;
+}
+.hero-stat-n{
+  font-family:'Orbitron',monospace;font-weight:700;
+  font-size:1.8rem;
+  background:linear-gradient(135deg,var(--accent),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-stat-l{font-size:.8rem;color:var(--muted);letter-spacing:1px;}
+
+/* scroll indicator */
+.scroll-ind{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.scroll-ind span{
+  font-family:'Share Tech Mono',monospace;
+  font-size:.65rem;letter-spacing:3px;color:var(--muted);
+}
+.scroll-dot{
+  width:4px;height:40px;border-radius:4px;
+  background:linear-gradient(var(--accent),transparent);
+  animation:scrollAnim 1.8s ease-in-out infinite;
+}
+
+/* ─── SECTION COMMONS ─── */
+section{padding:100px 60px;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Share Tech Mono',monospace;
+  font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:12px;
+}
+.sec-tag::before{
+  content:'';width:20px;height:1px;background:var(--cyan);
+}
+.sec-h{
+  font-family:'Orbitron',monospace;font-weight:700;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  color:var(--white);margin-bottom:16px;line-height:1.2;
+}
+.sec-h .g{
+  background:linear-gradient(90deg,var(--accent),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.sec-sub{color:var(--muted);max-width:580px;margin-bottom:56px;font-size:1.05rem;}
+.divider{
+  width:60px;height:2px;margin-bottom:48px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  border-radius:2px;
+}
+
+/* ─── ABOUT ─── */
+#about{background:var(--bg2);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.about-photo{
+  position:relative;border-radius:16px;overflow:hidden;
+  border:1px solid var(--border2);
+  box-shadow:0 0 60px rgba(37,99,235,.15);
+}
+.about-photo img{width:100%;height:420px;object-fit:cover;display:block;}
+.about-photo-badge{
+  position:absolute;bottom:20px;left:20px;
+  background:rgba(7,9,15,.85);backdrop-filter:blur(10px);
+  border:1px solid var(--border2);border-radius:12px;
+  padding:14px 20px;
+}
+.about-photo-badge .name{
+  font-family:'Orbitron',monospace;font-weight:700;
+  color:var(--white);font-size:.85rem;
+}
+.about-photo-badge .title{color:var(--muted);font-size:.8rem;margin-top:2px;}
+.about-text p{color:var(--muted);margin-bottom:18px;font-size:1rem;}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+.feat{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:20px;
+  transition:border-color .25s,transform .25s;
+}
+.feat:hover{border-color:var(--blue);transform:translateY(-3px);}
+.feat-icon{font-size:1.4rem;margin-bottom:8px;}
+.feat-title{font-weight:600;color:var(--white);font-size:.95rem;}
+.feat-desc{font-size:.82rem;color:var(--muted);margin-top:4px;}
+.stats-row{display:flex;gap:28px;margin-top:36px;}
+.stat-b{text-align:center;}
+.stat-b .n{
+  font-family:'Orbitron',monospace;font-weight:700;font-size:2rem;
+  background:linear-gradient(90deg,var(--accent),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.stat-b .l{font-size:.78rem;color:var(--muted);letter-spacing:1px;margin-top:2px;}
+
+/* ─── PRODUCTS ─── */
+#products{background:var(--bg);}
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:24px;
+}
+.prod-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  position:relative;
+}
+.prod-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.prod-card:hover{transform:translateY(-6px);border-color:var(--border2);box-shadow:0 20px 60px rgba(37,99,235,.15);}
+.prod-card:hover::before{opacity:1;}
+.prod-img{width:100%;height:200px;object-fit:cover;display:block;}
+.prod-canvas{width:100%;height:200px;background:#090d14;}
+.prod-body{padding:24px;}
+.prod-chip{
+  display:inline-block;padding:3px 10px;
+  background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);
+  border-radius:100px;font-size:.7rem;color:var(--accent);
+  font-family:'Share Tech Mono',monospace;letter-spacing:1px;
+  margin-bottom:10px;
+}
+.prod-body h3{font-weight:700;font-size:1.15rem;color:var(--white);margin-bottom:8px;}
+.prod-body p{color:var(--muted);font-size:.9rem;line-height:1.6;}
+
+/* ─── METAL COMPONENTS ─── */
+#metal{background:var(--bg2);}
+.metal-hero{
+  position:relative;border-radius:20px;overflow:hidden;
+  margin-bottom:56px;
+}
+.metal-hero img{width:100%;height:380px;object-fit:cover;display:block;}
+.metal-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(7,9,15,.9) 40%,transparent);
+  display:flex;align-items:center;padding:48px;
+}
+.metal-hero-text .sec-tag{margin-bottom:8px;}
+.metal-hero-text .sec-h{margin-bottom:12px;}
+.metal-hero-text p{color:var(--muted);max-width:480px;}
+.metal-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:20px;
+}
+.metal-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  transition:transform .25s,border-color .25s;
+}
+.metal-card:hover{transform:translateY(-4px);border-color:var(--border2);}
+.metal-card img{width:100%;height:160px;object-fit:cover;display:block;}
+.metal-card-body{padding:16px;}
+.metal-card-body h4{font-weight:600;color:var(--white);font-size:.95rem;}
+.metal-card-body p{color:var(--muted);font-size:.82rem;margin-top:4px;}
+
+/* ─── MACHINERY ─── */
+#machinery{background:var(--bg);}
+.mach-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:20px;
+}
+.mach-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.mach-card:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 0 30px rgba(37,99,235,.1);}
+.mach-img{width:100%;height:150px;object-fit:cover;display:block;}
+.mach-body{padding:18px;display:flex;gap:14px;align-items:center;}
+.mach-icon-box{
+  width:44px;height:44px;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(124,58,237,.2));
+  border:1px solid rgba(37,99,235,.3);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+}
+.mach-name{font-weight:600;color:var(--white);font-size:.95rem;}
+.mach-sub{font-size:.78rem;color:var(--muted);margin-top:2px;}
+
+/* ─── CONTACT ─── */
+#contact{background:var(--bg2);}
+.contact-wrap{
+  display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start;
+}
+.contact-left h3{
+  font-family:'Orbitron',monospace;font-weight:700;
+  font-size:1.3rem;color:var(--white);margin-bottom:28px;
+}
+.c-item{display:flex;gap:16px;margin-bottom:24px;}
+.c-icon{
+  width:44px;height:44px;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(6,182,212,.15));
+  border:1px solid rgba(37,99,235,.35);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.c-label{
+  font-family:'Share Tech Mono',monospace;
+  font-size:.65rem;letter-spacing:3px;color:var(--cyan);text-transform:uppercase;
+}
+.c-val{color:var(--text);font-weight:500;margin-top:2px;font-size:.95rem;}
+.map-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:8px;padding:9px 20px;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:#fff;border-radius:8px;text-decoration:none;
+  font-size:.82rem;font-weight:600;letter-spacing:.5px;
+  box-shadow:0 0 20px var(--glow);transition:box-shadow .2s,transform .2s;
+}
+.map-btn:hover{box-shadow:0 0 32px var(--glow);transform:translateY(-2px);}
+/* FORM */
+.contact-form{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:40px;
+}
+.contact-form h3{
+  font-family:'Orbitron',monospace;font-weight:700;
+  font-size:1.3rem;color:var(--white);margin-bottom:28px;
+}
+.fg{margin-bottom:20px;}
+.fg label{
+  display:block;font-family:'Share Tech Mono',monospace;
+  font-size:.68rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.fg input,.fg textarea,.fg select{
+  width:100%;padding:12px 16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border2);border-radius:10px;
+  color:var(--text);font-family:'Outfit',sans-serif;font-size:.95rem;
+  transition:border-color .2s,box-shadow .2s;outline:none;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{
+  border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+.fg textarea{resize:vertical;min-height:100px;}
+.fg select option{background:var(--bg3);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.f-submit{
+  width:100%;padding:14px;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  border:none;border-radius:10px;color:#fff;
+  font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;
+  letter-spacing:.5px;cursor:pointer;
+  box-shadow:0 0 24px var(--glow);
+  transition:box-shadow .2s,transform .2s;
+}
+.f-submit:hover{box-shadow:0 0 40px var(--glow);transform:translateY(-2px);}
+.f-success{
+  display:none;text-align:center;padding:24px;
+  color:var(--cyan);font-weight:600;font-size:1rem;
+  border:1px solid rgba(6,182,212,.3);border-radius:10px;
+  background:rgba(6,182,212,.05);margin-top:16px;
+}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--bg);border-top:1px solid var(--border);
+  padding:40px 60px;
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+}
+.footer-logo{
+  font-family:'Orbitron',monospace;font-weight:900;
+  font-size:1rem;color:var(--white);letter-spacing:2px;
+}
+.footer-logo span{
+  background:linear-gradient(90deg,var(--accent),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+footer p{color:var(--muted);font-size:.85rem;}
+footer a{color:var(--accent);text-decoration:none;}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(28px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+@keyframes scrollAnim{0%,100%{opacity:1;}50%{opacity:.2;}}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:14px 24px;}
+  nav ul{gap:20px;}
+  section{padding:80px 24px;}
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  #hero-die-canvas{max-width:100%;height:340px;}
+  .about-grid,.contact-wrap{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  nav ul,.nav-cta{display:none;}
+  .hero-stats{gap:20px;}
+  .form-row{grid-template-columns:1fr;}
+  footer .footer-inner{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" id="glow"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <div class="nav-logo-icon">⚙</div>
+    BHARTI EW
+  </a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Dies</a></li>
+    <li><a href="#metal">Components</a></li>
+    <li><a href="#machinery">Machinery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span></span> KANPUR, UTTAR PRADESH</div>
+      <h1 class="hero-title">
+        BHARTI<br>
+        <span class="grad">ENGINEERING</span><br>
+        WORKS
+      </h1>
+      <p class="hero-desc">
+        <strong>Custom Dies · Metal Components · Industrial Tooling</strong><br>
+        Precision-engineered dies and metal parts manufactured in-house — trusted by industries across Kanpur and beyond.
+      </p>
+      <div class="hero-btns">
+        <a href="#products" class="btn btn-primary">⚙ Explore Products</a>
+        <a href="#contact" class="btn btn-ghost">Get a Quote →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-b"><div class="n">10+</div><div class="l">YEARS EXP</div></div>
+        <div class="stat-b"><div class="n">500+</div><div class="l">DIES MADE</div></div>
+        <div class="stat-b"><div class="n">100%</div><div class="l">CUSTOM</div></div>
+      </div>
+    </div>
+    <div class="hero-3d">
+      <canvas id="hero-die-canvas"></canvas>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <span>SCROLL</span>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-photo">
+        <!-- Royalty-free factory/precision engineering photo from Unsplash -->
+        <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80&fit=crop" alt="Precision engineering workshop" loading="lazy">
+        <div class="about-photo-badge">
+          <div class="name">Mr. K P Sharma</div>
+          <div class="title">Proprietor, Bharti Engineering Works</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="sec-tag">About Us</div>
+        <h2 class="sec-h">BUILT ON <span class="g">PRECISION</span></h2>
+        <div class="divider"></div>
+        <p>Bharti Engineering Works is a leading manufacturer of precision dies and custom metal components, based in Kanpur, Uttar Pradesh. Under the expert leadership of <strong style="color:var(--text)">Mr. K P Sharma</strong>, we have delivered high-quality tooling solutions for over a decade.</p>
+        <p>Our factory at Dabouli, Kanpur is equipped with state-of-the-art machinery that allows us to manufacture everything in-house — from first cut to final quality inspection — with zero compromise on accuracy.</p>
+        <p style="font-size:.95rem;color:var(--cyan);font-weight:600;margin-top:8px;">📞 <a href="tel:6307058767" style="color:inherit;text-decoration:none;">6307058767</a></p>
+        <div class="about-feats">
+          <div class="feat"><div class="feat-icon">🎯</div><div class="feat-title">Tight Tolerances</div><div class="feat-desc">Micron-level accuracy on all dies</div></div>
+          <div class="feat"><div class="feat-icon">🔄</div><div class="feat-title">Full In-House</div><div class="feat-desc">Design to delivery under one roof</div></div>
+          <div class="feat"><div class="feat-icon">⚡</div><div class="feat-title">Fast Turnaround</div><div class="feat-desc">On-time delivery, every time</div></div>
+          <div class="feat"><div class="feat-icon">🛡️</div><div class="feat-title">Quality Assured</div><div class="feat-desc">100% inspection before dispatch</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIES / PRODUCTS -->
+<section id="products">
+  <div class="sec-inner">
+    <div class="sec-tag">Our Products</div>
+    <h2 class="sec-h">ALL TYPES <span class="g">OF DIES</span></h2>
+    <div class="divider"></div>
+    <p class="sec-sub">Every die is engineered to your exact specification — whether you provide a drawing, sample, or just an idea.</p>
+    <div class="products-grid">
+
+      <div class="prod-card">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80&fit=crop" alt="Plastic moulding die" loading="lazy">
+        <div class="prod-body">
+          <div class="prod-chip">INJECTION / COMPRESSION</div>
+          <h3>Plastic Moulding Die</h3>
+          <p>High-precision cavity and core sets for injection & compression moulding. Consistent output, tight tolerances, extended tool life.</p>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1581093458791-9f3c3250a8b0?w=600&q=80&fit=crop" alt="Punching die metal" loading="lazy">
+        <div class="prod-body">
+          <div class="prod-chip">SHEET METAL / BLANKING</div>
+          <h3>Punching Die</h3>
+          <p>Heavy-duty dies for sheet metal punching and blanking. Ground to exact specifications for clean, burr-free cuts every time.</p>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <canvas class="prod-canvas" id="c-bend"></canvas>
+        <div class="prod-body">
+          <div class="prod-chip">V-DIE / U-DIE / WIPE</div>
+          <h3>Bending Die</h3>
+          <p>Custom bending dies for complex profiles. Achieve repeatable bends with minimal spring-back across all metal grades.</p>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?w=600&q=80&fit=crop" alt="Forming drawing die" loading="lazy">
+        <div class="prod-body">
+          <div class="prod-chip">DEEP DRAW / PROGRESSIVE</div>
+          <h3>Forming &amp; Drawing Die</h3>
+          <p>Deep drawing and forming dies for complex 3D shapes. Smooth surface finish and accurate profiles for high-volume production.</p>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <canvas class="prod-canvas" id="c-trim"></canvas>
+        <div class="prod-body">
+          <div class="prod-chip">FLASH REMOVAL / FINISHING</div>
+          <h3>Trimming Die</h3>
+          <p>Precision trimming dies to remove flash and achieve final dimensional accuracy on forged and cast components.</p>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <canvas class="prod-canvas" id="c-custom"></canvas>
+        <div class="prod-body">
+          <div class="prod-chip">CUSTOM / SPECIAL PURPOSE</div>
+          <h3>Custom Dies</h3>
+          <p>We engineer dies to your drawing or sample — any size, any complexity, delivered on time from our Kanpur facility.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- METAL COMPONENTS -->
+<section id="metal">
+  <div class="sec-inner">
+    <div class="metal-hero">
+      <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=80&fit=crop&crop=center" alt="Precision metal components manufacturing" loading="lazy">
+      <div class="metal-hero-overlay">
+        <div class="metal-hero-text">
+          <div class="sec-tag">Manufacturing</div>
+          <h2 class="sec-h">ALL TYPES OF<br><span class="g">METAL COMPONENTS</span></h2>
+          <p>From simple brackets to complex machined parts — we manufacture all types of precision metal components to drawing, sample, or specification. MS, SS, Aluminium, Brass, Copper and more.</p>
+        </div>
+      </div>
+    </div>
+    <div class="metal-grid">
+      <div class="metal-card">
+        <img src="https://images.unsplash.com/photo-1564419320408-38bbad8077d9?w=400&q=80&fit=crop" alt="Turned components" loading="lazy">
+        <div class="metal-card-body"><h4>Turned Components</h4><p>Precision CNC & lathe turned parts in any material</p></div>
+      </div>
+      <div class="metal-card">
+        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80&fit=crop" alt="Milled components" loading="lazy">
+        <div class="metal-card-body"><h4>Milled Components</h4><p>Complex milled parts to tight tolerances</p></div>
+      </div>
+      <div class="metal-card">
+        <img src="https://images.unsplash.com/photo-1581093458791-9f3c3250a8b0?w=400&q=80&fit=crop" alt="Sheet metal parts" loading="lazy">
+        <div class="metal-card-body"><h4>Sheet Metal Parts</h4><p>Punched, bent and formed sheet metal components</p></div>
+      </div>
+      <div class="metal-card">
+        <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&q=80&fit=crop" alt="Jigs and fixtures" loading="lazy">
+        <div class="metal-card-body"><h4>Jigs &amp; Fixtures</h4><p>Custom jigs and fixtures for production lines</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MACHINERY -->
+<section id="machinery">
+  <div class="sec-inner">
+    <div class="sec-tag">Our Facility</div>
+    <h2 class="sec-h">IN-HOUSE <span class="g">MACHINERY</span></h2>
+    <div class="divider"></div>
+    <p class="sec-sub">Our factory at Dabouli, Kanpur is equipped with a full suite of precision machines — end-to-end production capability under one roof.</p>
+    <div class="mach-grid">
+      <div class="mach-card">
+        <img class="mach-img" src="https://images.unsplash.com/photo-1562408590-e32931084e23?w=500&q=80&fit=crop" alt="CNC milling machine" loading="lazy">
+        <div class="mach-body"><div class="mach-icon-box">🤖</div><div><div class="mach-name">CNC Machine</div><div class="mach-sub">High-precision computer controlled machining</div></div></div>
+      </div>
+      <div class="mach-card">
+        <img class="mach-img" src="https://images.unsplash.com/photo-1581093196277-9f608bb3b511?w=500&q=80&fit=crop" alt="Lathe machine workshop" loading="lazy">
+        <div class="mach-body"><div class="mach-icon-box">🔩</div><div><div class="mach-name">Lathe Machine</div><div class="mach-sub">Turning, threading and boring operations</div></div></div>
+      </div>
+      <div class="mach-card">
+        <img class="mach-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=80&fit=crop" alt="Milling machine" loading="lazy">
+        <div class="mach-body"><div class="mach-icon-box">⚙️</div><div><div class="mach-name">Milling Machine</div><div class="mach-sub">Complex profile and face milling</div></div></div>
+      </div>
+      <div class="mach-card">
+        <img class="mach-img" src="https://images.unsplash.com/photo-1581093458791-9f3c3250a8b0?w=500&q=80&fit=crop" alt="Surface grinder" loading="lazy">
+        <div class="mach-body"><div class="mach-icon-box">✨</div><div><div class="mach-name">Surface Grinder</div><div class="mach-sub">Mirror finish surface grinding</div></div></div>
+      </div>
+      <div class="mach-card">
+        <img class="mach-img" src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=500&q=80&fit=crop" alt="Press machine" loading="lazy">
+        <div class="mach-body"><div class="mach-icon-box">🏗️</div><div><div class="mach-name">Press Machine</div><div class="mach-sub">Heavy-duty pressing and stamping</div></div></div>
+      </div>
+      <div class="mach-card">
+        <img class="mach-img" src="https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?w=500&q=80&fit=crop" alt="EDM machine" loading="lazy">
+        <div class="mach-body"><div class="mach-icon-box">⚡</div><div><div class="mach-name">EDM Machine</div><div class="mach-sub">Electrical discharge machining</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-inner">
+    <div class="sec-tag">Get In Touch</div>
+    <h2 class="sec-h">CONTACT <span class="g">US</span></h2>
+    <div class="divider"></div>
+    <div class="contact-wrap">
+      <div class="contact-left">
+        <h3>Reach Us Directly</h3>
+        <div class="c-item">
+          <div class="c-icon">👤</div>
+          <div>
+            <div class="c-label">Proprietor</div>
+            <div class="c-val">Mr. K P Sharma</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Phone / WhatsApp</div>
+            <div class="c-val"><a href="tel:6307058767" style="color:var(--accent);text-decoration:none;">6307058767</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">Email</div>
+            <div class="c-val"><a href="mailto:newbhartienggworks@gmail.com" style="color:var(--accent);text-decoration:none;">newbhartienggworks@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🏭</div>
+          <div>
+            <div class="c-label">Factory</div>
+            <div class="c-val">Dabouli, Kanpur, Uttar Pradesh</div>
+            <a class="map-btn"
+               href="https://www.google.com/maps/dir/?api=1&destination=26.447530,80.278405"
+               target="_blank" rel="noopener noreferrer">
+              📍 Open Factory in Google Maps
+            </a>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🏢</div>
+          <div>
+            <div class="c-label">Office</div>
+            <div class="c-val">LG 312, Barra 7, Kanpur, Uttar Pradesh</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM — sends email to newbhartienggworks@gmail.com -->
+      <div class="contact-form">
+        <h3>Send Us an Enquiry</h3>
+        <div class="form-row">
+          <div class="fg">
+            <label>Your Name *</label>
+            <input type="text" id="f-name" placeholder="e.g. Ramesh Gupta">
+          </div>
+          <div class="fg">
+            <label>Phone / WhatsApp *</label>
+            <input type="tel" id="f-phone" placeholder="e.g. 9876543210">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Email Address</label>
+          <input type="email" id="f-email" placeholder="you@example.com">
+        </div>
+        <div class="fg">
+          <label>Company / Business Name</label>
+          <input type="text" id="f-company" placeholder="Your Company (if any)">
+        </div>
+        <div class="fg">
+          <label>Enquiry For</label>
+          <select id="f-type">
+            <option value="">-- Select Product / Service --</option>
+            <option>Plastic Moulding Die</option>
+            <option>Punching Die</option>
+            <option>Bending Die</option>
+            <option>Forming / Drawing Die</option>
+            <option>Trimming Die</option>
+            <option>Custom Die</option>
+            <option>Metal Components – Turned Parts</option>
+            <option>Metal Components – Milled Parts</option>
+            <option>Metal Components – Sheet Metal</option>
+            <option>Jigs &amp; Fixtures</option>
+            <option>Job Work / Machining</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Message / Requirement Details</label>
+          <textarea id="f-msg" placeholder="Describe your requirement — material, dimensions, quantity, drawing reference etc."></textarea>
+        </div>
+        <button class="f-submit" onclick="submitForm()">⚡ Send Enquiry to Bharti EW</button>
+        <div class="f-success" id="form-success">
+          ✅ Your enquiry has been sent! Mr. K P Sharma will contact you shortly.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">BHARTI <span>ENGINEERING WORKS</span></div>
+      <p style="margin-top:6px;">Proprietor: Mr. K P Sharma &nbsp;|&nbsp; <a href="tel:6307058767">📞 6307058767</a></p>
+      <p>Factory: Dabouli, Kanpur &nbsp;|&nbsp; Office: LG 312 Barra 7, Kanpur</p>
+    </div>
+    <div style="text-align:right;">
+      <p><a href="mailto:newbhartienggworks@gmail.com">newbhartienggworks@gmail.com</a></p>
+      <p style="margin-top:8px;font-size:.78rem;color:#2d3748;">© 2025 Bharti Engineering Works. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- THREE.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ── CURSOR GLOW ── */
+const glowEl=document.getElementById('glow');
+document.addEventListener('mousemove',e=>{glowEl.style.left=e.clientX+'px';glowEl.style.top=e.clientY+'px';});
+
+/* ── HELPERS ── */
+const metalMat=(col,roughness=.25)=>new THREE.MeshStandardMaterial({color:col,metalness:.9,roughness});
+const stdLights=(scene)=>{
+  scene.add(new THREE.AmbientLight(0xffffff,.4));
+  const d=new THREE.DirectionalLight(0x60a0ff,3); d.position.set(8,10,6); scene.add(d);
+  const p=new THREE.PointLight(0x7c3aed,3,30); p.position.set(-6,4,4); scene.add(p);
+  const p2=new THREE.PointLight(0x06b6d4,2,20); p2.position.set(4,-4,2); scene.add(p2);
+};
+
+/* ── HERO BACKGROUND PARTICLES + GRID ── */
+(()=>{
+  const canvas=document.getElementById('hero-canvas');
+  const ren=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  ren.setPixelRatio(Math.min(devicePixelRatio,2));
+  ren.setSize(innerWidth,innerHeight);
+  const scene=new THREE.Scene(), cam=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,.1,200);
+  cam.position.set(0,0,30);
+  stdLights(scene);
+  // floating particles
+  const pg=new THREE.BufferGeometry(),pc=1200,pp=new Float32Array(pc*3);
+  for(let i=0;i<pc*3;i++) pp[i]=(Math.random()-.5)*80;
+  pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
+  scene.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0x2563eb,size:.12,transparent:true,opacity:.6})));
+  // grid
+  const g=new THREE.GridHelper(60,40,0x1e2d45,0x1a2235); g.position.y=-12; scene.add(g);
+  let t=0,mx=0,my=0;
+  window.addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5)*4;my=-(e.clientY/innerHeight-.5)*3;});
+  (function loop(){requestAnimationFrame(loop);t+=.006;
+    cam.position.x+=(mx-cam.position.x)*.04;
+    cam.position.y+=(my-cam.position.y)*.04;
+    cam.lookAt(0,0,0);
+    ren.render(scene,cam);
+  })();
+  window.addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();ren.setSize(innerWidth,innerHeight);});
+})();
+
+/* ── HERO DIE CANVAS – big rotating assembly ── */
+(()=>{
+  const canvas=document.getElementById('hero-die-canvas');
+  const W=canvas.clientWidth, H=canvas.clientHeight;
+  const ren=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  ren.setPixelRatio(Math.min(devicePixelRatio,2));
+  ren.setSize(W,H,false);
+  ren.shadowMap.enabled=true;
+  const scene=new THREE.Scene(), cam=new THREE.PerspectiveCamera(55,W/H,.1,100);
+  cam.position.set(0,3,12);cam.lookAt(0,0,0);
+  stdLights(scene);
+  // Add extra rim light for drama
+  const rim=new THREE.PointLight(0x2563eb,4,20); rim.position.set(-5,5,-4); scene.add(rim);
+
+  const group=new THREE.Group();
+
+  // Main mould die body
+  const body=new THREE.Mesh(new THREE.CylinderGeometry(2.5,2.5,1.2,64), metalMat(0x1e3a5f));
+  group.add(body);
+
+  // Top ring
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(1.6,.15,24,64), metalMat(0x2563eb,.2));
+  ring.rotation.x=Math.PI/2; ring.position.y=.62; group.add(ring);
+
+  // Bottom ring
+  const ring2=ring.clone(); ring2.position.y=-.62; group.add(ring2);
+
+  // Outer band
+  const band=new THREE.Mesh(new THREE.CylinderGeometry(2.52,2.52,.2,64), metalMat(0x2563eb,.15));
+  group.add(band);
+
+  // Center cavity
+  const cav=new THREE.Mesh(new THREE.CylinderGeometry(.7,.7,1.3,32), metalMat(0x0a1628,.1));
+  group.add(cav);
+
+  // 8 bolts around rim
+  for(let i=0;i<8;i++){
+    const a=(i/8)*Math.PI*2;
+    const bolt=new THREE.Mesh(new THREE.CylinderGeometry(.1,.1,.3,8), metalMat(0x6aa0e0,.1));
+    bolt.position.set(Math.cos(a)*2.1,0,Math.sin(a)*2.1); group.add(bolt);
+  }
+
+  // Punch pin
+  const pin=new THREE.Mesh(new THREE.CylinderGeometry(.35,.35,2.2,16), metalMat(0x38bdf8,.15));
+  pin.position.y=1.7; group.add(pin);
+  const pinTip=new THREE.Mesh(new THREE.ConeGeometry(.35,.4,16), metalMat(0x60cef8,.1));
+  pinTip.position.y=3.0; group.add(pinTip);
+
+  // Glow ring via emissive torus
+  const glow=new THREE.Mesh(new THREE.TorusGeometry(2.55,.05,16,64),
+    new THREE.MeshStandardMaterial({color:0x2563eb,emissive:0x2563eb,emissiveIntensity:2}));
+  glow.rotation.x=Math.PI/2; group.add(glow);
+
+  scene.add(group);
+
+  // Floating particles around die
+  const pg=new THREE.BufferGeometry(),pc=120,pp=new Float32Array(pc*3);
+  for(let i=0;i<pc;i++){const a=Math.random()*Math.PI*2,r=3+Math.random()*2;pp[i*3]=Math.cos(a)*r;pp[i*3+1]=(Math.random()-.5)*4;pp[i*3+2]=Math.sin(a)*r;}
+  pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
+  scene.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0x38bdf8,size:.06,transparent:true,opacity:.7})));
+
+  let t=0;
+  (function loop(){requestAnimationFrame(loop);t+=.01;
+    group.rotation.y=t;
+    group.position.y=Math.sin(t*.7)*.3;
+    glow.material.emissiveIntensity=1.5+Math.sin(t*2)*.5;
+    ren.render(scene,cam);
+  })();
+})();
+
+/* ── MINI PRODUCT CARD SCENES ── */
+function miniScene(id,buildFn){
+  const c=document.getElementById(id); if(!c)return;
+  const ren=new THREE.WebGLRenderer({canvas:c,antialias:true,alpha:true});
+  ren.setPixelRatio(Math.min(devicePixelRatio,2));
+  const w=c.clientWidth,h=c.clientHeight; ren.setSize(w,h,false);
+  const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(55,w/h,.1,100);
+  cam.position.set(0,2.5,7);cam.lookAt(0,0,0);
+  stdLights(sc);
+  const obj=buildFn(); sc.add(obj);
+  let t=0;(function loop(){requestAnimationFrame(loop);t+=.013;obj.rotation.y=t;ren.render(sc,cam);})();
+}
+const BM=(c,r=.2)=>new THREE.MeshStandardMaterial({color:c,metalness:.88,roughness:r});
+
+miniScene('c-bend',()=>{
+  const g=new THREE.Group();
+  const s=new THREE.Shape();
+  s.moveTo(-2,0);s.lineTo(0,-1.4);s.lineTo(2,0);s.lineTo(2,.8);s.lineTo(-2,.8);s.closePath();
+  const m=new THREE.Mesh(new THREE.ExtrudeGeometry(s,{depth:.85,bevelEnabled:true,bevelSize:.07,bevelThickness:.07,bevelSegments:2}),BM(0x1e3a5f));
+  m.position.set(-1,-.3,-.43);g.add(m);
+  // accent line
+  const al=new THREE.Mesh(new THREE.BoxGeometry(4.1,.06,.06),new THREE.MeshStandardMaterial({color:0x2563eb,emissive:0x2563eb,emissiveIntensity:2}));
+  al.position.set(0,.83,0);g.add(al);
+  return g;
+});
+
+miniScene('c-trim',()=>{
+  const g=new THREE.Group();
+  g.add(new THREE.Mesh(new THREE.CylinderGeometry(1.9,1.9,.55,64),BM(0x1e3a5f)));
+  g.add(new THREE.Mesh(new THREE.TorusGeometry(1.92,.04,16,64),new THREE.MeshStandardMaterial({color:0x2563eb,emissive:0x2563eb,emissiveIntensity:2})));
+  for(let i=0;i<10;i++){
+    const bl=new THREE.Mesh(new THREE.BoxGeometry(.06,.6,.38),BM(0x6aa0e0,.1));
+    const a=(i/10)*Math.PI*2;
+    bl.position.set(Math.cos(a)*1.6,0,Math.sin(a)*1.6);bl.rotation.y=a;g.add(bl);
+  }
+  return g;
+});
+
+miniScene('c-custom',()=>{
+  const g=new THREE.Group();
+  const s=new THREE.Shape();
+  for(let i=0;i<12;i++){
+    const r=i%2===0?1.7:.85,a=(i/12)*Math.PI*2-Math.PI/2;
+    i===0?s.moveTo(Math.cos(a)*r,Math.sin(a)*r):s.lineTo(Math.cos(a)*r,Math.sin(a)*r);
+  }s.closePath();
+  const m=new THREE.Mesh(new THREE.ExtrudeGeometry(s,{depth:.55,bevelEnabled:true,bevelSize:.08,bevelThickness:.08,bevelSegments:2}),BM(0x1e3a5f));
+  m.position.set(-.1,-1.1,-.28);g.add(m);
+  // glow ring
+  const gr=new THREE.Mesh(new THREE.TorusGeometry(1.75,.04,16,64),new THREE.MeshStandardMaterial({color:0x38bdf8,emissive:0x38bdf8,emissiveIntensity:2}));
+  gr.rotation.x=Math.PI*.3;g.add(gr);
+  return g;
+});
+
+/* ── FORM SUBMIT → EMAIL ── */
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const company=document.getElementById('f-company').value.trim();
+  const type=document.getElementById('f-type').value;
+  const msg=document.getElementById('f-msg').value.trim();
+
+  if(!name||!phone){alert('Please enter your Name and Phone number.');return;}
+
+  const subject=encodeURIComponent('New Website Enquiry – Bharti Engineering Works');
+  const body=encodeURIComponent(
+    `New Enquiry from Website\n`+
+    `${'─'.repeat(40)}\n`+
+    `Name        : ${name}\n`+
+    `Phone       : ${phone}\n`+
+    `Email       : ${email||'Not provided'}\n`+
+    `Company     : ${company||'Not provided'}\n`+
+    `Enquiry For : ${type||'Not selected'}\n`+
+    `${'─'.repeat(40)}\n`+
+    `Message:\n${msg||'No message provided'}\n\n`+
+    `Sent via Bharti Engineering Works website`
+  );
+
+  // Opens the user's email client with pre-filled To, Subject, Body
+  window.location.href=`mailto:newbhartienggworks@gmail.com?subject=${subject}&body=${body}`;
+
+  document.getElementById('form-success').style.display='block';
+  ['f-name','f-phone','f-email','f-company','f-msg'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-type').value='';
+}
+</script>
+</body>
+</html>
